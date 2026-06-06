@@ -95,6 +95,26 @@ With a Prometheus configuration that reads these annotations, Prometheus can scr
 http://backend.devops-platform.svc.cluster.local:8080/metrics
 ```
 
+## Prometheus Configuration
+
+A Prometheus scrape configuration template is available at:
+
+```text
+observability/prometheus/prometheus.yml
+```
+
+It discovers Kubernetes Services and keeps only Services with:
+
+```yaml
+prometheus.io/scrape: "true"
+```
+
+The backend Service added in this project matches that rule and exposes:
+
+```text
+/metrics on port 8080
+```
+
 ## Run With Docker
 
 Build and start both containers:
@@ -214,3 +234,4 @@ devops-platform.local
 - Step 11: Add Kubernetes Ingress
 - Step 12: Add backend Prometheus metrics endpoint
 - Step 13: Add Prometheus scrape annotations
+- Step 14: Add Prometheus scrape configuration
