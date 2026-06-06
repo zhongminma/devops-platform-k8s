@@ -98,6 +98,27 @@ The backend Service is internal to the cluster by default:
 backend:8080
 ```
 
+## Deploy Frontend To Kubernetes
+
+Apply the frontend Kubernetes manifests:
+
+```bash
+kubectl apply -f k8s/frontend
+```
+
+Frontend Kubernetes files:
+
+| File | Purpose |
+| --- | --- |
+| `k8s/frontend/deployment.yaml` | Runs frontend Pods from the frontend container image |
+| `k8s/frontend/service.yaml` | Creates a stable internal network endpoint for the frontend Pods |
+
+The frontend Service is internal to the cluster by default:
+
+```text
+frontend:80
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -108,3 +129,4 @@ backend:8080
 - Step 6: Add React frontend posts UI
 - Step 7: Add Docker container support
 - Step 8: Add backend Kubernetes manifests
+- Step 9: Add frontend Kubernetes manifests
