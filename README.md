@@ -77,11 +77,26 @@ Stop the containers:
 docker compose down
 ```
 
+## Kubernetes Namespace
+
+Create the project namespace before applying application manifests:
+
+```bash
+kubectl apply -f k8s/base/namespace.yaml
+```
+
+This project deploys Kubernetes resources into:
+
+```text
+devops-platform
+```
+
 ## Deploy Backend To Kubernetes
 
 Apply the backend Kubernetes manifests:
 
 ```bash
+kubectl apply -f k8s/base/namespace.yaml
 kubectl apply -f k8s/backend
 ```
 
@@ -103,6 +118,7 @@ backend:8080
 Apply the frontend Kubernetes manifests:
 
 ```bash
+kubectl apply -f k8s/base/namespace.yaml
 kubectl apply -f k8s/frontend
 ```
 
@@ -130,3 +146,4 @@ frontend:80
 - Step 7: Add Docker container support
 - Step 8: Add backend Kubernetes manifests
 - Step 9: Add frontend Kubernetes manifests
+- Step 10: Add Kubernetes namespace
