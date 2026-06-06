@@ -31,6 +31,7 @@ Useful backend endpoints:
 ```text
 GET http://localhost:8080/health
 GET http://localhost:8080/api/posts
+GET http://localhost:8080/metrics
 ```
 
 Start the React frontend in a second terminal:
@@ -54,6 +55,31 @@ Port summary:
 | Frontend | `http://localhost:5173` | React UI |
 | Backend | `http://localhost:8080` | Node.js API |
 | Posts API | `http://localhost:8080/api/posts` | JSON data used by the React UI |
+
+## Backend Metrics
+
+The backend exposes Prometheus metrics at:
+
+```text
+http://localhost:8080/metrics
+```
+
+The metrics endpoint includes:
+
+| Metric | Purpose |
+| --- | --- |
+| `process_*` | Default Node.js process metrics |
+| `nodejs_*` | Default Node.js runtime metrics |
+| `http_requests_total` | Count HTTP requests by method, route, and status code |
+| `http_request_duration_seconds` | Measure HTTP request latency by method, route, and status code |
+
+Example Prometheus queries for later Grafana dashboards:
+
+```promql
+rate(http_requests_total[5m])
+histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, route))
+nodejs_heap_size_used_bytes
+```
 
 ## Run With Docker
 
@@ -172,3 +198,4 @@ devops-platform.local
 - Step 9: Add frontend Kubernetes manifests
 - Step 10: Add Kubernetes namespace
 - Step 11: Add Kubernetes Ingress
+- Step 12: Add backend Prometheus metrics endpoint
