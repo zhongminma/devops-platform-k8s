@@ -13,3 +13,5 @@ The goal is to build a production-style template that combines:
 ## Progress
 
 - Step 1: Initialize the GitHub repository
+- Step 2: Add project directory structure
+- Step 3: Add architecture documentation
