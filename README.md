@@ -55,6 +55,28 @@ Port summary:
 | Backend | `http://localhost:8080` | Node.js API |
 | Posts API | `http://localhost:8080/api/posts` | JSON data used by the React UI |
 
+## Run With Docker
+
+Build and start both containers:
+
+```bash
+docker compose up --build
+```
+
+Docker port summary:
+
+| Service | URL | Purpose |
+| --- | --- | --- |
+| Frontend container | `http://localhost:3000` | React UI served by nginx |
+| Backend container | `http://localhost:8080` | Node.js API |
+| Posts API | `http://localhost:8080/api/posts` | JSON data used by the React UI |
+
+Stop the containers:
+
+```bash
+docker compose down
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -63,3 +85,4 @@ Port summary:
 - Step 4: Add local development documentation
 - Step 5: Add Node.js backend CRUD API
 - Step 6: Add React frontend posts UI
+- Step 7: Add Docker container support
