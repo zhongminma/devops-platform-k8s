@@ -77,6 +77,27 @@ Stop the containers:
 docker compose down
 ```
 
+## Deploy Backend To Kubernetes
+
+Apply the backend Kubernetes manifests:
+
+```bash
+kubectl apply -f k8s/backend
+```
+
+Backend Kubernetes files:
+
+| File | Purpose |
+| --- | --- |
+| `k8s/backend/deployment.yaml` | Runs backend Pods from the backend container image |
+| `k8s/backend/service.yaml` | Creates a stable internal network endpoint for the backend Pods |
+
+The backend Service is internal to the cluster by default:
+
+```text
+backend:8080
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -86,3 +107,4 @@ docker compose down
 - Step 5: Add Node.js backend CRUD API
 - Step 6: Add React frontend posts UI
 - Step 7: Add Docker container support
+- Step 8: Add backend Kubernetes manifests
