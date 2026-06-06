@@ -81,6 +81,20 @@ histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by 
 nodejs_heap_size_used_bytes
 ```
 
+The backend Kubernetes Service also includes Prometheus scrape annotations:
+
+```yaml
+prometheus.io/scrape: "true"
+prometheus.io/path: "/metrics"
+prometheus.io/port: "8080"
+```
+
+With a Prometheus configuration that reads these annotations, Prometheus can scrape:
+
+```text
+http://backend.devops-platform.svc.cluster.local:8080/metrics
+```
+
 ## Run With Docker
 
 Build and start both containers:
@@ -199,3 +213,4 @@ devops-platform.local
 - Step 10: Add Kubernetes namespace
 - Step 11: Add Kubernetes Ingress
 - Step 12: Add backend Prometheus metrics endpoint
+- Step 13: Add Prometheus scrape annotations
