@@ -10,6 +10,51 @@ The goal is to build a production-style template that combines:
 - Prometheus and Grafana for observability
 - Node.js and React for a sample full-stack application
 
+## Run Locally
+
+Start the backend API:
+
+```bash
+cd apps/backend
+npm install
+npm run start
+```
+
+The backend runs on:
+
+```text
+http://localhost:8080
+```
+
+Useful backend endpoints:
+
+```text
+GET http://localhost:8080/health
+GET http://localhost:8080/api/posts
+```
+
+Start the React frontend in a second terminal:
+
+```bash
+cd apps/frontend
+npm install
+npm run start
+```
+
+The React app runs on:
+
+```text
+http://localhost:5173
+```
+
+Port summary:
+
+| Service | URL | Purpose |
+| --- | --- | --- |
+| Frontend | `http://localhost:5173` | React UI |
+| Backend | `http://localhost:8080` | Node.js API |
+| Posts API | `http://localhost:8080/api/posts` | JSON data used by the React UI |
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -17,3 +62,4 @@ The goal is to build a production-style template that combines:
 - Step 3: Add architecture documentation
 - Step 4: Add local development documentation
 - Step 5: Add Node.js backend CRUD API
+- Step 6: Add React frontend posts UI
