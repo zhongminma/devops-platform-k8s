@@ -135,6 +135,30 @@ The frontend Service is internal to the cluster by default:
 frontend:80
 ```
 
+## Deploy Ingress
+
+This project includes an nginx Ingress example for local or cluster environments with an ingress controller installed.
+
+Apply the Ingress manifest:
+
+```bash
+kubectl apply -f k8s/ingress
+```
+
+Ingress routes:
+
+| Path | Service |
+| --- | --- |
+| `/` | `frontend:80` |
+| `/api/*` | `backend:8080` |
+| `/health` | `backend:8080` |
+
+Example host:
+
+```text
+devops-platform.local
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -147,3 +171,4 @@ frontend:80
 - Step 8: Add backend Kubernetes manifests
 - Step 9: Add frontend Kubernetes manifests
 - Step 10: Add Kubernetes namespace
+- Step 11: Add Kubernetes Ingress
