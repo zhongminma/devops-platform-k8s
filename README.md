@@ -15,3 +15,4 @@ The goal is to build a production-style template that combines:
 - Step 1: Initialize the GitHub repository
 - Step 2: Add project directory structure
 - Step 3: Add architecture documentation
+- Step 4: Add local development documentation
