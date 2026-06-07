@@ -23,6 +23,11 @@ output "availability_zones" {
   value       = var.availability_zones
 }
 
+output "public_route_table_id" {
+  description = "ID of the public route table created by the network module."
+  value       = aws_route_table.public.id
+}
+
 output "public_subnet_ids" {
   description = "IDs of public subnets created by the network module."
   value       = aws_subnet.public[*].id
