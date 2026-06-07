@@ -67,3 +67,17 @@ The `kubernetes_tools` role checks for CLI tools used by this platform:
 - AWS CLI
 
 It currently reports tool availability and does not install binaries by default.
+
+## Bootstrap Playbook
+
+The platform bootstrap playbook lives in:
+
+```text
+ansible/playbooks/bootstrap.yml
+```
+
+Additional playbook usage notes live in:
+
+```text
+ansible/PLAYBOOKS.md
+```
