@@ -198,3 +198,11 @@ terraform/examples/dev.tfvars.example
 ```
 
 This file is documentation-oriented. Do not commit real secrets or cloud credentials in `.tfvars` files.
+
+## Plan Guide
+
+Detailed plan and safety instructions live in:
+
+```text
+terraform/PLAN.md
+```
