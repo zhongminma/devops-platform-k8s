@@ -102,3 +102,8 @@ output "eks_node_group_name" {
   description = "Name of the default EKS managed node group."
   value       = module.eks.node_group_name
 }
+
+output "eks_node_group_arn" {
+  description = "ARN of the default EKS managed node group."
+  value       = module.eks.node_group_arn
+}

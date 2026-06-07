@@ -591,3 +591,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 46: Add Terraform EKS cluster resource
 - Step 47: Add Terraform EKS cluster outputs
 - Step 48: Add Terraform managed node group block
+- Step 49: Configure Terraform dev node group sizing
