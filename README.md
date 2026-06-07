@@ -530,3 +530,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 31: Add Terraform network module skeleton
 - Step 32: Wire dev Terraform environment to network module
 - Step 33: Add Terraform EKS module skeleton
+- Step 34: Wire dev Terraform environment to EKS module
