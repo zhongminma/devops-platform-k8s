@@ -137,6 +137,24 @@ Stop the containers:
 docker compose down
 ```
 
+## Kubernetes Images
+
+Kubernetes deployments use images published to GitHub Container Registry:
+
+```text
+ghcr.io/zhongminma/devops-platform-backend:latest
+ghcr.io/zhongminma/devops-platform-frontend:latest
+```
+
+The Docker Publish workflow builds and publishes these images on pushes to `main`.
+
+For local Docker Desktop Kubernetes, make sure the images are published before applying deployments:
+
+```bash
+kubectl apply -f k8s/backend
+kubectl apply -f k8s/frontend
+```
+
 ## Kubernetes Namespace
 
 Create the project namespace before applying application manifests:
@@ -370,3 +388,4 @@ This is the first delivery step: it publishes deployable artifacts, but it does 
 - Step 17: Add GitHub Actions CI
 - Step 18: Add Docker build CI
 - Step 19: Add Docker image publishing to GHCR
+- Step 20: Use GHCR images in Kubernetes manifests
