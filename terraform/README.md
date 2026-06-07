@@ -167,7 +167,7 @@ The network module skeleton lives at:
 terraform/modules/network
 ```
 
-It creates the base AWS VPC and exposes VPC outputs. Subnet and internet gateway resources are included. Public and private route tables are included. Optional NAT gateway routing is included for private subnet outbound access.
+It creates the base AWS VPC and exposes VPC outputs. Subnet and internet gateway resources are included. Public and private route tables are included. Optional NAT gateway resources are available, but private routing is not connected to NAT by default.
 
 ## EKS Module Skeleton
 
