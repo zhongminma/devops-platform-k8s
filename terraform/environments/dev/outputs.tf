@@ -87,3 +87,13 @@ output "eks_node_group_role_arn" {
   description = "IAM role ARN used by EKS managed node groups."
   value       = module.eks.node_group_role_arn
 }
+
+output "eks_cluster_arn" {
+  description = "ARN of the EKS cluster."
+  value       = module.eks.cluster_arn
+}
+
+output "eks_cluster_endpoint" {
+  description = "Endpoint URL for the EKS Kubernetes API server."
+  value       = module.eks.cluster_endpoint
+}

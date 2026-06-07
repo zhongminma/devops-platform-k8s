@@ -589,3 +589,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 44: Keep NAT gateway disconnected by default
 - Step 45: Add Terraform EKS IAM roles block
 - Step 46: Add Terraform EKS cluster resource
+- Step 47: Add Terraform EKS cluster outputs
