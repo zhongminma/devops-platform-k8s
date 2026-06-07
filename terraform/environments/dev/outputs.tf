@@ -58,6 +58,16 @@ output "network_private_route_table_id" {
   value       = module.network.private_route_table_id
 }
 
+output "network_nat_gateway_id" {
+  description = "NAT gateway ID created by the network module, if enabled."
+  value       = module.network.nat_gateway_id
+}
+
+output "network_nat_eip_public_ip" {
+  description = "NAT gateway EIP public IP, if enabled."
+  value       = module.network.nat_eip_public_ip
+}
+
 output "network_public_subnet_ids" {
   description = "Public subnet IDs created by the network module."
   value       = module.network.public_subnet_ids

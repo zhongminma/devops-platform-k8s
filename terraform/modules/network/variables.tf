@@ -31,3 +31,9 @@ variable "private_subnet_cidrs" {
   type        = list(string)
   default     = []
 }
+
+variable "enable_nat_gateway" {
+  description = "Whether to create a NAT gateway for private subnet outbound internet access."
+  type        = bool
+  default     = false
+}

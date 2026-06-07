@@ -33,6 +33,16 @@ output "private_route_table_id" {
   value       = aws_route_table.private.id
 }
 
+output "nat_gateway_id" {
+  description = "ID of the NAT gateway created by the network module, if enabled."
+  value       = var.enable_nat_gateway ? aws_nat_gateway.this[0].id : null
+}
+
+output "nat_eip_public_ip" {
+  description = "Public IP address of the NAT gateway EIP, if enabled."
+  value       = var.enable_nat_gateway ? aws_eip.nat[0].public_ip : null
+}
+
 output "public_subnet_ids" {
   description = "IDs of public subnets created by the network module."
   value       = aws_subnet.public[*].id
