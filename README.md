@@ -443,6 +443,23 @@ Apply it after Argo CD is installed in the cluster:
 kubectl apply -f gitops/argocd/devops-platform-app.yaml
 ```
 
+## Operations Runbook
+
+Common local operations and troubleshooting commands are documented in:
+
+```text
+docs/operations-runbook.md
+```
+
+The runbook covers:
+
+- Argo CD sync and health checks
+- Application Pod checks
+- Prometheus target checks
+- Grafana dashboard access
+- ImagePullBackOff and CrashLoopBackOff troubleshooting
+- Rollout and rollback commands
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -469,3 +486,4 @@ kubectl apply -f gitops/argocd/devops-platform-app.yaml
 - Step 22: Add GitOps deployment plan
 - Step 23: Add Kustomize structure
 - Step 24: Add Argo CD Application manifest
+- Step 25: Add operations runbook
