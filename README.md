@@ -195,6 +195,50 @@ The frontend Service is internal to the cluster by default:
 frontend:80
 ```
 
+## Deploy Monitoring Stack
+
+This project includes learning-focused Kubernetes manifests for Prometheus and Grafana.
+
+Apply the monitoring manifests:
+
+```bash
+kubectl apply -f k8s/monitoring
+```
+
+Prometheus discovers Services with Prometheus scrape annotations and scrapes the backend metrics endpoint.
+
+Access Prometheus locally:
+
+```bash
+kubectl port-forward -n monitoring svc/prometheus 9090:9090
+```
+
+Then open:
+
+```text
+http://localhost:9090
+```
+
+Access Grafana locally:
+
+```bash
+kubectl port-forward -n monitoring svc/grafana 3000:3000
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+Default Grafana login:
+
+```text
+admin / admin
+```
+
+Note: this monitoring stack is designed for learning. Prometheus uses `emptyDir` storage, so metrics are not persisted if the Pod is deleted.
+
 ## Deploy Ingress
 
 This project includes an nginx Ingress example for local or cluster environments with an ingress controller installed.
@@ -235,3 +279,4 @@ devops-platform.local
 - Step 12: Add backend Prometheus metrics endpoint
 - Step 13: Add Prometheus scrape annotations
 - Step 14: Add Prometheus scrape configuration
+- Step 15: Add Prometheus and Grafana Kubernetes manifests
