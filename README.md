@@ -1,14 +1,26 @@
-# DevOps Platform K8s
+# Production Kubernetes Platform
 
-This repository is a step-by-step DevOps platform project.
+A production-style cloud-native platform designed to demonstrate modern DevOps, Platform Engineering, and Site Reliability Engineering (SRE) practices.
 
-The goal is to build a production-style template that combines:
+This project integrates Infrastructure as Code (IaC), GitOps-based deployments, container orchestration, and observability into a single end-to-end platform.
 
-- Kubernetes for application deployment
-- Terraform for infrastructure provisioning
-- Ansible for server configuration
-- Prometheus and Grafana for observability
-- Node.js and React for a sample full-stack application
+Key Capabilities
+Kubernetes for container orchestration and workload management
+Terraform for Infrastructure as Code (IaC)
+Ansible for configuration management and automation
+ArgoCD for GitOps continuous delivery
+Prometheus and Grafana for monitoring and observability
+Docker for application packaging and deployment
+Node.js and React sample application for end-to-end validation
+Objectives
+Provision infrastructure using declarative automation
+Deploy applications through GitOps workflows
+Implement monitoring and alerting for platform visibility
+Demonstrate scalable and repeatable platform operations
+Simulate production-style deployment and operational practices
+Technology Stack
+
+Terraform | Ansible | Kubernetes | Docker | ArgoCD | Prometheus | Grafana | Node.js | React
 
 ## Run Locally
 
