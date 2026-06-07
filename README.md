@@ -328,6 +328,27 @@ Docker build checks:
 
 This is still CI, not CD, because it does not publish images or deploy to Kubernetes.
 
+## Docker Image Publishing
+
+GitHub Actions can publish Docker images to GitHub Container Registry.
+
+Workflow file:
+
+```text
+.github/workflows/docker-publish.yml
+```
+
+Published images:
+
+```text
+ghcr.io/zhongminma/devops-platform-backend:latest
+ghcr.io/zhongminma/devops-platform-frontend:latest
+```
+
+Each image is also tagged with the Git commit SHA.
+
+This is the first delivery step: it publishes deployable artifacts, but it does not deploy them to Kubernetes yet.
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -348,3 +369,4 @@ This is still CI, not CD, because it does not publish images or deploy to Kubern
 - Step 16: Add Grafana dashboard provisioning
 - Step 17: Add GitHub Actions CI
 - Step 18: Add Docker build CI
+- Step 19: Add Docker image publishing to GHCR
