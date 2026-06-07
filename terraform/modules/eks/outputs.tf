@@ -53,3 +53,13 @@ output "endpoint_public_access" {
   description = "Whether public EKS endpoint access is enabled."
   value       = var.endpoint_public_access
 }
+
+output "node_group_name" {
+  description = "Name of the default EKS managed node group."
+  value       = aws_eks_node_group.default.node_group_name
+}
+
+output "node_group_arn" {
+  description = "ARN of the default EKS managed node group."
+  value       = aws_eks_node_group.default.arn
+}

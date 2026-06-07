@@ -177,7 +177,7 @@ The EKS module skeleton lives at:
 terraform/modules/eks
 ```
 
-It creates IAM roles, policy attachments, and the EKS control plane. Managed node group resources are added separately.
+It creates IAM roles, policy attachments, and the EKS control plane. Managed node group resources are included.
 
 ## Next Steps
 

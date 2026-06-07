@@ -97,3 +97,8 @@ output "eks_cluster_endpoint" {
   description = "Endpoint URL for the EKS Kubernetes API server."
   value       = module.eks.cluster_endpoint
 }
+
+output "eks_node_group_name" {
+  description = "Name of the default EKS managed node group."
+  value       = module.eks.node_group_name
+}
