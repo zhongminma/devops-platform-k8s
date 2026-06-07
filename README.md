@@ -587,3 +587,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 41: Add Terraform private route table
 - Step 43: Add Terraform NAT gateway block
 - Step 44: Keep NAT gateway disconnected by default
+- Step 45: Add Terraform EKS IAM roles block

@@ -2,7 +2,7 @@
 
 This module will manage the Kubernetes control plane and worker node infrastructure for AWS EKS.
 
-At this stage, it is only a skeleton. It defines inputs and outputs so the platform can wire environment configuration before creating real AWS resources.
+At this stage, it creates IAM roles and policy attachments required by future EKS cluster and managed node group resources.
 
 ## Planned Responsibilities
 
@@ -35,7 +35,9 @@ At this stage, it is only a skeleton. It defines inputs and outputs so the platf
 | `private_subnet_ids` | Private subnet IDs passed into the module |
 | `endpoint_private_access` | Private API endpoint setting |
 | `endpoint_public_access` | Public API endpoint setting |
+| `cluster_role_arn` | IAM role ARN for the EKS control plane |
+| `node_group_role_arn` | IAM role ARN for managed node groups |
 
 ## Notes
 
-This module intentionally does not create resources yet. Real EKS resources will be added in smaller follow-up commits.
+This module now creates IAM roles and policy attachments only. EKS cluster and managed node group resources will be added in follow-up commits.

@@ -3,6 +3,16 @@ output "cluster_full_name" {
   value       = local.cluster_full_name
 }
 
+output "cluster_role_arn" {
+  description = "ARN of the IAM role used by the EKS control plane."
+  value       = aws_iam_role.cluster.arn
+}
+
+output "node_group_role_arn" {
+  description = "ARN of the IAM role used by EKS managed node groups."
+  value       = aws_iam_role.node_group.arn
+}
+
 output "kubernetes_version" {
   description = "Kubernetes version configured for the EKS control plane."
   value       = var.kubernetes_version

@@ -177,7 +177,7 @@ The EKS module skeleton lives at:
 terraform/modules/eks
 ```
 
-It currently defines module inputs and placeholder outputs. It does not create AWS resources yet.
+It creates IAM roles and policy attachments required by later EKS cluster and node group resources.
 
 ## Next Steps
 

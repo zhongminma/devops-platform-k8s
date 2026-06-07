@@ -77,3 +77,13 @@ output "network_private_subnet_ids" {
   description = "Private subnet IDs created by the network module."
   value       = module.network.private_subnet_ids
 }
+
+output "eks_cluster_role_arn" {
+  description = "IAM role ARN used by the EKS control plane."
+  value       = module.eks.cluster_role_arn
+}
+
+output "eks_node_group_role_arn" {
+  description = "IAM role ARN used by EKS managed node groups."
+  value       = module.eks.node_group_role_arn
+}
