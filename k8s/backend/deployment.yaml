@@ -18,7 +18,7 @@ spec:
       containers:
         - name: backend
           image: ghcr.io/zhongminma/devops-platform-backend:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

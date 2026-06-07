@@ -18,7 +18,7 @@ spec:
       containers:
         - name: frontend
           image: ghcr.io/zhongminma/devops-platform-frontend:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           readinessProbe:
