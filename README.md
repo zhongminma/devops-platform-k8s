@@ -383,6 +383,22 @@ docs/release-notes-template.md
 
 Local Docker Desktop Kubernetes deployment remains manual because GitHub Actions cannot directly reach a developer laptop cluster.
 
+## GitOps Direction
+
+Kubernetes CD will use a GitOps approach in a future step.
+
+Plan document:
+
+```text
+docs/gitops.md
+```
+
+Recommended controller:
+
+```text
+Argo CD
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -406,3 +422,4 @@ Local Docker Desktop Kubernetes deployment remains manual because GitHub Actions
 - Step 19: Add Docker image publishing to GHCR
 - Step 20: Use GHCR images in Kubernetes manifests
 - Step 21: Add deployment workflow and release notes docs
+- Step 22: Add GitOps deployment plan
