@@ -367,6 +367,22 @@ Each image is also tagged with the Git commit SHA.
 
 This is the first delivery step: it publishes deployable artifacts, but it does not deploy them to Kubernetes yet.
 
+## Deployment Workflow
+
+Deployment guidance is documented in:
+
+```text
+docs/deployment-workflow.md
+```
+
+Release notes can be prepared from:
+
+```text
+docs/release-notes-template.md
+```
+
+Local Docker Desktop Kubernetes deployment remains manual because GitHub Actions cannot directly reach a developer laptop cluster.
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -389,3 +405,4 @@ This is the first delivery step: it publishes deployable artifacts, but it does 
 - Step 18: Add Docker build CI
 - Step 19: Add Docker image publishing to GHCR
 - Step 20: Use GHCR images in Kubernetes manifests
+- Step 21: Add deployment workflow and release notes docs
