@@ -188,3 +188,13 @@ It creates IAM roles, policy attachments, and the EKS control plane. Managed nod
 5. Add EKS module skeleton. Completed.
 6. Wire the dev environment to the EKS module. Completed.
 7. Add Terraform CI checks. Completed.
+
+## Examples
+
+Example variable values live in:
+
+```text
+terraform/examples/dev.tfvars.example
+```
+
+This file is documentation-oriented. Do not commit real secrets or cloud credentials in `.tfvars` files.

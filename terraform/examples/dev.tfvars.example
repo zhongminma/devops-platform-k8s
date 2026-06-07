@@ -1,0 +1,23 @@
+# Example variable overrides for terraform/environments/dev.
+# Copy values from this file into a real .tfvars file when you are ready to plan/apply.
+
+project_name = "devops-platform-k8s"
+environment  = "dev"
+aws_region   = "us-east-1"
+cluster_name = "devops-platform-dev"
+
+# Network sizing is currently configured in terraform/environments/dev/main.tf.
+# Future production environments should move these values into environment variables or tfvars.
+
+# EKS node group sizing defaults used by the dev environment.
+node_instance_types = ["t3.medium"]
+node_desired_size   = 2
+node_min_size       = 1
+node_max_size       = 3
+
+# Core EKS add-ons managed by Terraform.
+cluster_addons = [
+  "vpc-cni",
+  "coredns",
+  "kube-proxy"
+]
