@@ -527,3 +527,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 28: Add Terraform documentation
 - Step 29: Add Terraform provider skeleton
 - Step 30: Add Terraform variables and outputs skeleton
+- Step 31: Add Terraform network module skeleton

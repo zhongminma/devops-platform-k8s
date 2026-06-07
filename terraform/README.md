@@ -159,11 +159,21 @@ Current variables:
 
 These values are placeholders for later module wiring and do not create resources by themselves.
 
+## Network Module Skeleton
+
+The network module skeleton lives at:
+
+```text
+terraform/modules/network
+```
+
+It currently defines module inputs and placeholder outputs. It does not create AWS resources yet.
+
 ## Next Steps
 
 1. Add provider skeleton. Completed for `environments/dev`.
 2. Add variables and outputs skeleton. Completed for `environments/dev`.
-3. Add network module skeleton.
+3. Add network module skeleton. Completed.
 4. Add EKS module skeleton.
 5. Wire the dev environment.
 6. Add Terraform CI checks.
