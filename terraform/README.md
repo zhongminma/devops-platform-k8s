@@ -169,11 +169,22 @@ terraform/modules/network
 
 It currently defines module inputs and placeholder outputs. It does not create AWS resources yet.
 
+## EKS Module Skeleton
+
+The EKS module skeleton lives at:
+
+```text
+terraform/modules/eks
+```
+
+It currently defines module inputs and placeholder outputs. It does not create AWS resources yet.
+
 ## Next Steps
 
 1. Add provider skeleton. Completed for `environments/dev`.
 2. Add variables and outputs skeleton. Completed for `environments/dev`.
 3. Add network module skeleton. Completed.
 4. Wire the dev environment to the network module. Completed.
-5. Add EKS module skeleton.
-6. Add Terraform CI checks.
+5. Add EKS module skeleton. Completed.
+6. Wire the dev environment to the EKS module.
+7. Add Terraform CI checks.
