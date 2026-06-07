@@ -128,9 +128,22 @@ The repository `.gitignore` excludes local state files.
 - Keep environment-specific values separate from reusable modules.
 - Prefer small reusable modules over large environment-only files.
 
+## Dev Provider Skeleton
+
+The development environment starts with a minimal AWS provider skeleton:
+
+```text
+terraform/environments/dev/versions.tf
+terraform/environments/dev/providers.tf
+```
+
+It pins the AWS provider source and version range, then configures the provider for `us-east-1` with default tags.
+
+This step does not create any cloud resources.
+
 ## Next Steps
 
-1. Add provider skeleton.
+1. Add provider skeleton. Completed for `environments/dev`.
 2. Add variables and outputs skeleton.
 3. Add network module skeleton.
 4. Add EKS module skeleton.
