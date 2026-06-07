@@ -42,3 +42,13 @@ output "network_vpc_id" {
   description = "VPC ID created by the network module."
   value       = module.network.vpc_id
 }
+
+output "network_public_subnet_ids" {
+  description = "Public subnet IDs created by the network module."
+  value       = module.network.public_subnet_ids
+}
+
+output "network_private_subnet_ids" {
+  description = "Private subnet IDs created by the network module."
+  value       = module.network.private_subnet_ids
+}

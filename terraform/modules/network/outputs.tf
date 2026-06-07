@@ -18,6 +18,16 @@ output "availability_zones" {
   value       = var.availability_zones
 }
 
+output "public_subnet_ids" {
+  description = "IDs of public subnets created by the network module."
+  value       = aws_subnet.public[*].id
+}
+
+output "private_subnet_ids" {
+  description = "IDs of private subnets created by the network module."
+  value       = aws_subnet.private[*].id
+}
+
 output "public_subnet_cidrs" {
   description = "Configured public subnet CIDR blocks."
   value       = var.public_subnet_cidrs
