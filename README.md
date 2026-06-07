@@ -24,14 +24,16 @@ J[Ansible] --> C
 ```
 ## Screenshots
 ### Grafana Dashboard
-(图)
+<img width="1519" height="748" alt="Screenshot 2026-06-07 at 15 49 28" src="https://github.com/user-attachments/assets/37ec5805-3a20-45ed-9d18-7a556da8c669" />
+
 
 ### ArgoCD Application Status
-<img width="1663" height="760" alt="Screenshot 2026-06-07 at 14 59 59" src="https://github.com/user-attachments/assets/86bc5ed2-6c48-436d-9e85-40bf6c506f7c" />
+<img width="1506" height="512" alt="Screenshot 2026-06-07 at 16 48 11" src="https://github.com/user-attachments/assets/909ce83d-f279-47a0-9bf8-6d8a85bf1258" />
 
 
 ### Kubernetes Workloads
-(图)
+<img width="1707" height="868" alt="Screenshot 2026-06-07 at 16 50 15" src="https://github.com/user-attachments/assets/78f2ffbf-cb53-4119-bb4e-3fb53847e929" />
+
 
 ## Reliability & Observability
 
