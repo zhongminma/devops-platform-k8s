@@ -206,3 +206,17 @@ Detailed plan and safety instructions live in:
 ```text
 terraform/PLAN.md
 ```
+
+## Remote State
+
+Remote state guidance lives in:
+
+```text
+terraform/REMOTE_STATE.md
+```
+
+A disabled backend template is available at:
+
+```text
+terraform/environments/dev/backend.tf.example
+```

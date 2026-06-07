@@ -1,0 +1,12 @@
+# Example remote state backend for the dev environment.
+# Rename this file to backend.tf only after creating the S3 bucket and DynamoDB lock table.
+
+terraform {
+  backend "s3" {
+    bucket         = "REPLACE_WITH_TERRAFORM_STATE_BUCKET"
+    key            = "devops-platform-k8s/dev/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "REPLACE_WITH_TERRAFORM_LOCK_TABLE"
+    encrypt        = true
+  }
+}

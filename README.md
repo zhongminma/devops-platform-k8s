@@ -595,3 +595,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 50: Add Terraform EKS add-ons block
 - Step 51: Add Terraform dev tfvars example
 - Step 52: Add Terraform plan guide
+- Step 53: Add Terraform remote state skeleton
