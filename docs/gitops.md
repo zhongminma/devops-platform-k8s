@@ -96,10 +96,28 @@ Argo CD can then watch:
 k8s/overlays/local
 ```
 
+## Argo CD Application Manifest
+
+The Argo CD Application manifest lives at:
+
+```text
+gitops/argocd/devops-platform-app.yaml
+```
+
+It points Argo CD to:
+
+```text
+repoURL: https://github.com/zhongminma/devops-platform-k8s.git
+targetRevision: main
+path: k8s/overlays/local
+```
+
+It enables automated sync with prune and self-heal.
+
 ## Future Steps
 
 1. Restructure Kubernetes manifests with Kustomize. Completed with `k8s/overlays/local`.
-2. Add an Argo CD Application manifest.
+2. Add an Argo CD Application manifest. Completed with `gitops/argocd/devops-platform-app.yaml`.
 3. Install Argo CD in the local Kubernetes cluster.
 4. Point Argo CD at this GitHub repository.
 5. Enable automated sync, prune, and self-heal.

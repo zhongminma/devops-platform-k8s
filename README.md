@@ -421,6 +421,28 @@ Recommended controller:
 Argo CD
 ```
 
+## Argo CD Application
+
+Argo CD can deploy this project using:
+
+```text
+gitops/argocd/devops-platform-app.yaml
+```
+
+The Application watches:
+
+```text
+https://github.com/zhongminma/devops-platform-k8s.git
+path: k8s/overlays/local
+branch: main
+```
+
+Apply it after Argo CD is installed in the cluster:
+
+```bash
+kubectl apply -f gitops/argocd/devops-platform-app.yaml
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -446,3 +468,4 @@ Argo CD
 - Step 21: Add deployment workflow and release notes docs
 - Step 22: Add GitOps deployment plan
 - Step 23: Add Kustomize structure
+- Step 24: Add Argo CD Application manifest
