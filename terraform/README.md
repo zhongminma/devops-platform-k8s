@@ -141,10 +141,28 @@ It pins the AWS provider source and version range, then configures the provider 
 
 This step does not create any cloud resources.
 
+## Dev Variables And Outputs Skeleton
+
+The development environment includes basic variables and outputs:
+
+```text
+terraform/environments/dev/variables.tf
+terraform/environments/dev/outputs.tf
+```
+
+Current variables:
+
+- `project_name`
+- `environment`
+- `aws_region`
+- `cluster_name`
+
+These values are placeholders for later module wiring and do not create resources by themselves.
+
 ## Next Steps
 
 1. Add provider skeleton. Completed for `environments/dev`.
-2. Add variables and outputs skeleton.
+2. Add variables and outputs skeleton. Completed for `environments/dev`.
 3. Add network module skeleton.
 4. Add EKS module skeleton.
 5. Wire the dev environment.
