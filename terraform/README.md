@@ -187,4 +187,4 @@ It currently defines module inputs and placeholder outputs. It does not create A
 4. Wire the dev environment to the network module. Completed.
 5. Add EKS module skeleton. Completed.
 6. Wire the dev environment to the EKS module. Completed.
-7. Add Terraform CI checks.
+7. Add Terraform CI checks. Completed.
