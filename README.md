@@ -239,6 +239,33 @@ admin / admin
 
 Note: this monitoring stack is designed for learning. Prometheus uses `emptyDir` storage, so metrics are not persisted if the Pod is deleted.
 
+## Grafana Dashboard
+
+Grafana is provisioned with a dashboard named:
+
+```text
+DevOps Platform Backend
+```
+
+The dashboard is loaded from:
+
+```text
+k8s/monitoring/grafana-dashboard-configmap.yaml
+```
+
+It includes panels for:
+
+- HTTP request rate by route
+- HTTP requests by status code
+- P95 latency by route
+- Node.js heap memory usage
+
+After applying monitoring manifests, restart Grafana if it is already running:
+
+```bash
+kubectl rollout restart deployment/grafana -n monitoring
+```
+
 ## Deploy Ingress
 
 This project includes an nginx Ingress example for local or cluster environments with an ingress controller installed.
@@ -280,3 +307,4 @@ devops-platform.local
 - Step 13: Add Prometheus scrape annotations
 - Step 14: Add Prometheus scrape configuration
 - Step 15: Add Prometheus and Grafana Kubernetes manifests
+- Step 16: Add Grafana dashboard provisioning
