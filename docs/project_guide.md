@@ -548,6 +548,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 58: Add Ansible platform bootstrap playbook
 - Step 59: Add MongoDB backend dependency and config
 - Step 60: Persist posts with MongoDB repository
+- Step 61: Add MongoDB Docker Compose service
 
 ## MongoDB Backend Configuration
 
@@ -596,3 +597,31 @@ MongoDB document shape:
 ```
 
 The repository seeds the initial two posts when the MongoDB collection is empty.
+
+## MongoDB With Docker Compose
+
+Docker Compose now starts MongoDB with the backend and frontend:
+
+```bash
+docker compose up --build
+```
+
+Compose services:
+
+| Service | Purpose |
+| --- | --- |
+| `backend` | Node.js API with `MONGODB_URI=mongodb://mongodb:27017` |
+| `frontend` | React UI served by nginx |
+| `mongodb` | MongoDB 7 with persistent Docker volume |
+
+MongoDB data is stored in the named Docker volume:
+
+```text
+mongodb_data
+```
+
+To remove the database volume during local testing:
+
+```bash
+docker compose down -v
+```
