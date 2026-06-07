@@ -15,5 +15,5 @@ module "eks" {
   project_name       = var.project_name
   environment        = var.environment
   cluster_name       = var.cluster_name
-  private_subnet_ids = []
+  private_subnet_ids = module.network.private_subnet_ids
 }
