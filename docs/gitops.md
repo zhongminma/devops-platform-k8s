@@ -98,7 +98,7 @@ k8s/overlays/local
 
 ## Future Steps
 
-1. Restructure Kubernetes manifests with Kustomize.
+1. Restructure Kubernetes manifests with Kustomize. Completed with `k8s/overlays/local`.
 2. Add an Argo CD Application manifest.
 3. Install Argo CD in the local Kubernetes cluster.
 4. Point Argo CD at this GitHub repository.

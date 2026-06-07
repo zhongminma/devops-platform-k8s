@@ -383,6 +383,28 @@ docs/release-notes-template.md
 
 Local Docker Desktop Kubernetes deployment remains manual because GitHub Actions cannot directly reach a developer laptop cluster.
 
+## Kustomize Deployment
+
+Kustomize provides a single local deployment entrypoint for GitOps tools and manual deployment:
+
+```text
+k8s/overlays/local
+```
+
+Render all local Kubernetes manifests:
+
+```bash
+kubectl kustomize k8s/overlays/local
+```
+
+Apply all local Kubernetes manifests:
+
+```bash
+kubectl apply -k k8s/overlays/local
+```
+
+This path is the recommended future Argo CD application path.
+
 ## GitOps Direction
 
 Kubernetes CD will use a GitOps approach in a future step.
@@ -423,3 +445,4 @@ Argo CD
 - Step 20: Use GHCR images in Kubernetes manifests
 - Step 21: Add deployment workflow and release notes docs
 - Step 22: Add GitOps deployment plan
+- Step 23: Add Kustomize structure
