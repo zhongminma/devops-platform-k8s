@@ -46,3 +46,13 @@ Dev group variables live in:
 ```text
 ansible/group_vars/dev.yml
 ```
+
+## Common Role
+
+The `common` role defines baseline packages and host bootstrap tasks.
+
+Run with check mode before applying changes:
+
+```bash
+ansible-playbook -i ansible/inventories/dev/hosts.yml ansible/playbooks/bootstrap.yml --check
+```

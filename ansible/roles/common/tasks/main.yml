@@ -1,0 +1,11 @@
+---
+- name: Show common bootstrap package list
+  ansible.builtin.debug:
+    var: common_packages
+
+- name: Install common packages on Debian family hosts
+  ansible.builtin.package:
+    name: "{{ common_packages }}"
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"

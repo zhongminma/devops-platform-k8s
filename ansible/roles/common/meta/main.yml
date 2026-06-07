@@ -1,0 +1,8 @@
+---
+galaxy_info:
+  role_name: common
+  author: devops-platform-k8s
+  description: Common bootstrap tasks for platform hosts.
+  license: MIT
+  min_ansible_version: "2.15"
+dependencies: []
