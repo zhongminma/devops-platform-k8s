@@ -32,7 +32,7 @@ J[Ansible] --> C
 
 
 ### Kubernetes Workloads
-<img width="1707" height="868" alt="Screenshot 2026-06-07 at 16 50 15" src="https://github.com/user-attachments/assets/78f2ffbf-cb53-4119-bb4e-3fb53847e929" />
+<img width="1585" height="790" alt="Screenshot 2026-06-07 at 17 25 23" src="https://github.com/user-attachments/assets/dd4f3300-b58c-4844-97af-cf311ba26258" />
 
 
 ## Reliability & Observability
