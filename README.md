@@ -27,7 +27,8 @@ J[Ansible] --> C
 (图)
 
 ### ArgoCD Application Status
-(图)
+<img width="1663" height="760" alt="Screenshot 2026-06-07 at 14 59 59" src="https://github.com/user-attachments/assets/86bc5ed2-6c48-436d-9e85-40bf6c506f7c" />
+
 
 ### Kubernetes Workloads
 (图)
