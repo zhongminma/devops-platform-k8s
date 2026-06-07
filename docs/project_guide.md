@@ -547,6 +547,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 57: Add Ansible Kubernetes tooling role
 - Step 58: Add Ansible platform bootstrap playbook
 - Step 59: Add MongoDB backend dependency and config
+- Step 60: Persist posts with MongoDB repository
 
 ## MongoDB Backend Configuration
 
@@ -570,3 +571,28 @@ Current behavior:
 - If `MONGODB_URI` is unset, the backend keeps using in-memory posts.
 - If MongoDB connection fails, the backend logs the error and keeps serving the API.
 - Posts persistence will be added in the next MongoDB step.
+
+## MongoDB Posts Persistence
+
+The backend posts API now uses a repository layer:
+
+```text
+apps/backend/src/posts.repository.js
+```
+
+Behavior:
+
+- When MongoDB is connected, posts are stored in the `posts` collection.
+- When MongoDB is disabled or unavailable, the API falls back to in-memory posts.
+- API routes remain unchanged for the frontend.
+
+MongoDB document shape:
+
+```json
+{
+  "post_id": 1,
+  "description": "Create the backend API"
+}
+```
+
+The repository seeds the initial two posts when the MongoDB collection is empty.

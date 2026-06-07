@@ -1,6 +1,13 @@
 import cors from "cors";
 import express from "express";
 import { connectToDatabase, getDatabaseStatus } from "./database.js";
+import {
+  createPost,
+  deletePost,
+  getPost,
+  listPosts,
+  updatePost
+} from "./posts.repository.js";
 import client from "prom-client";
 
 const app = express();
@@ -21,18 +28,6 @@ const httpRequestDurationSeconds = new client.Histogram({
   buckets: [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5]
 });
 
-let nextPostId = 3;
-const posts = [
-  {
-    post_id: 1,
-    description: "Create the backend API"
-  },
-  {
-    post_id: 2,
-    description: "Connect the React frontend"
-  }
-];
-
 app.use(cors());
 app.use(express.json());
 app.use(recordHttpMetrics);
@@ -50,12 +45,12 @@ app.get("/metrics", async (_req, res) => {
   res.end(await client.register.metrics());
 });
 
-app.get("/api/posts", (_req, res) => {
-  res.json(posts);
+app.get("/api/posts", async (_req, res) => {
+  res.json(await listPosts());
 });
 
-app.get("/api/posts/:post_id", (req, res) => {
-  const post = findPost(req.params.post_id);
+app.get("/api/posts/:post_id", async (req, res) => {
+  const post = await getPost(req.params.post_id);
 
   if (!post) {
     return res.status(404).json({ error: "Post not found" });
@@ -64,52 +59,43 @@ app.get("/api/posts/:post_id", (req, res) => {
   return res.json(post);
 });
 
-app.post("/api/posts", (req, res) => {
+app.post("/api/posts", async (req, res) => {
   const description = normalizeDescription(req.body?.description);
 
   if (!description) {
     return res.status(400).json({ error: "Post description is required" });
   }
 
-  const post = {
-    post_id: nextPostId,
-    description
-  };
-
-  nextPostId += 1;
-  posts.push(post);
+  const post = await createPost(description);
 
   return res.status(201).json(post);
 });
 
-app.put("/api/posts/:post_id", (req, res) => {
-  const post = findPost(req.params.post_id);
-
-  if (!post) {
-    return res.status(404).json({ error: "Post not found" });
-  }
-
+app.put("/api/posts/:post_id", async (req, res) => {
   const description = normalizeDescription(req.body?.description);
 
   if (req.body?.description !== undefined && !description) {
     return res.status(400).json({ error: "Post description cannot be empty" });
   }
 
-  if (description) {
-    post.description = description;
+  const existingPost = await getPost(req.params.post_id);
+
+  if (!existingPost) {
+    return res.status(404).json({ error: "Post not found" });
   }
+
+  const post = description ? await updatePost(req.params.post_id, description) : existingPost;
 
   return res.json(post);
 });
 
-app.delete("/api/posts/:post_id", (req, res) => {
-  const postIndex = posts.findIndex((post) => post.post_id === Number(req.params.post_id));
+app.delete("/api/posts/:post_id", async (req, res) => {
+  const deleted = await deletePost(req.params.post_id);
 
-  if (postIndex === -1) {
+  if (!deleted) {
     return res.status(404).json({ error: "Post not found" });
   }
 
-  posts.splice(postIndex, 1);
   return res.status(204).send();
 });
 
@@ -150,10 +136,6 @@ function normalizeRoutePath(path) {
   }
 
   return path || "unknown";
-}
-
-function findPost(postId) {
-  return posts.find((post) => post.post_id === Number(postId));
 }
 
 function normalizeDescription(description) {
