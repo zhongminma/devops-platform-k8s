@@ -1,0 +1,16 @@
+---
+- name: Show Kubernetes tooling expected on the platform host
+  ansible.builtin.debug:
+    var: kubernetes_tools
+
+- name: Check whether Kubernetes tooling is available
+  ansible.builtin.command: "{{ item }} version --client"
+  loop: "{{ kubernetes_tools }}"
+  changed_when: false
+  failed_when: false
+  register: kubernetes_tool_checks
+
+- name: Print Kubernetes tooling check results
+  ansible.builtin.debug:
+    msg: "{{ item.item }} check rc={{ item.rc }}"
+  loop: "{{ kubernetes_tool_checks.results }}"

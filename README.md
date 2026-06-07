@@ -599,3 +599,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 54: Add Ansible directory structure
 - Step 55: Add Ansible inventory and variables
 - Step 56: Add Ansible common bootstrap role
+- Step 57: Add Ansible Kubernetes tooling role

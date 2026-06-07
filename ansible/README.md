@@ -56,3 +56,14 @@ Run with check mode before applying changes:
 ```bash
 ansible-playbook -i ansible/inventories/dev/hosts.yml ansible/playbooks/bootstrap.yml --check
 ```
+
+## Kubernetes Tooling Role
+
+The `kubernetes_tools` role checks for CLI tools used by this platform:
+
+- kubectl
+- Helm
+- Argo CD CLI
+- AWS CLI
+
+It currently reports tool availability and does not install binaries by default.
