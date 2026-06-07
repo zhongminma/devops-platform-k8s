@@ -174,6 +174,6 @@ It currently defines module inputs and placeholder outputs. It does not create A
 1. Add provider skeleton. Completed for `environments/dev`.
 2. Add variables and outputs skeleton. Completed for `environments/dev`.
 3. Add network module skeleton. Completed.
-4. Add EKS module skeleton.
-5. Wire the dev environment.
+4. Wire the dev environment to the network module. Completed.
+5. Add EKS module skeleton.
 6. Add Terraform CI checks.
