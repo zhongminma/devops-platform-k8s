@@ -290,6 +290,26 @@ Example host:
 devops-platform.local
 ```
 
+## Continuous Integration
+
+GitHub Actions runs CI on pushes and pull requests to `main`.
+
+Workflow file:
+
+```text
+.github/workflows/ci.yml
+```
+
+CI checks:
+
+- Backend dependency install
+- Backend syntax check
+- Backend npm audit
+- Frontend dependency install
+- Frontend production build
+- Frontend npm audit
+- Kubernetes and observability YAML parsing
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -308,3 +328,4 @@ devops-platform.local
 - Step 14: Add Prometheus scrape configuration
 - Step 15: Add Prometheus and Grafana Kubernetes manifests
 - Step 16: Add Grafana dashboard provisioning
+- Step 17: Add GitHub Actions CI
