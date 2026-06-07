@@ -537,3 +537,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 38: Wire EKS module to network private subnets
 - Step 39: Add Terraform network internet gateway
 - Step 40: Add Terraform public route table
+- Step 41: Add Terraform private route table

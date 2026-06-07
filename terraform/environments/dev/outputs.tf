@@ -53,6 +53,11 @@ output "network_public_route_table_id" {
   value       = module.network.public_route_table_id
 }
 
+output "network_private_route_table_id" {
+  description = "Private route table ID created by the network module."
+  value       = module.network.private_route_table_id
+}
+
 output "network_public_subnet_ids" {
   description = "Public subnet IDs created by the network module."
   value       = module.network.public_subnet_ids

@@ -28,6 +28,11 @@ output "public_route_table_id" {
   value       = aws_route_table.public.id
 }
 
+output "private_route_table_id" {
+  description = "ID of the private route table created by the network module."
+  value       = aws_route_table.private.id
+}
+
 output "public_subnet_ids" {
   description = "IDs of public subnets created by the network module."
   value       = aws_subnet.public[*].id
