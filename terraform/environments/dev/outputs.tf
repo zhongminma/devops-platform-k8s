@@ -107,3 +107,8 @@ output "eks_node_group_arn" {
   description = "ARN of the default EKS managed node group."
   value       = module.eks.node_group_arn
 }
+
+output "eks_cluster_addons" {
+  description = "EKS add-ons configured for the cluster."
+  value       = module.eks.cluster_addons
+}

@@ -60,3 +60,9 @@ variable "node_max_size" {
   type        = number
   default     = 3
 }
+
+variable "cluster_addons" {
+  description = "EKS add-ons to install after the cluster is created."
+  type        = list(string)
+  default     = ["vpc-cni", "coredns", "kube-proxy"]
+}

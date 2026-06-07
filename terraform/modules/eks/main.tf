@@ -108,3 +108,16 @@ resource "aws_eks_node_group" "default" {
     aws_iam_role_policy_attachment.node_registry_policy
   ]
 }
+
+resource "aws_eks_addon" "this" {
+  for_each = toset(var.cluster_addons)
+
+  cluster_name                = aws_eks_cluster.this.name
+  addon_name                  = each.value
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
+
+  depends_on = [
+    aws_eks_node_group.default
+  ]
+}

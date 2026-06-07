@@ -63,3 +63,8 @@ output "node_group_arn" {
   description = "ARN of the default EKS managed node group."
   value       = aws_eks_node_group.default.arn
 }
+
+output "cluster_addons" {
+  description = "EKS add-ons configured for the cluster."
+  value       = sort(keys(aws_eks_addon.this))
+}
