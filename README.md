@@ -477,6 +477,24 @@ GitOps CD foundation complete
 Production hardening backlog documented
 ```
 
+## Terraform
+
+Terraform infrastructure code will live under:
+
+```text
+terraform/
+├── environments/
+│   ├── dev/
+│   └── prod/
+├── modules/
+│   ├── network/
+│   └── eks/
+├── examples/
+└── scripts/
+```
+
+The first Terraform step only adds the directory structure. Provider and module code will be added in later small commits.
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -505,3 +523,4 @@ Production hardening backlog documented
 - Step 24: Add Argo CD Application manifest
 - Step 25: Add operations runbook
 - Step 26: Add CI/CD status and hardening checklist
+- Step 27: Add Terraform directory structure
