@@ -1,26 +1,60 @@
-# Production Kubernetes Platform
+# Production Kubernetes Platform with GitOps & Observability
 
-A production-style cloud-native platform designed to demonstrate modern DevOps, Platform Engineering, and Site Reliability Engineering (SRE) practices.
+A production-style cloud-native platform that demonstrates modern DevOps, Platform Engineering, and Site Reliability Engineering (SRE) practices.
 
-This project integrates Infrastructure as Code (IaC), GitOps-based deployments, container orchestration, and observability into a single end-to-end platform.
+This project combines Infrastructure as Code (Terraform), Configuration Management (Ansible), GitOps Delivery (ArgoCD), Container Orchestration (Kubernetes), and Observability (Prometheus & Grafana) into a single end-to-end platform.
 
-Key Capabilities
-Kubernetes for container orchestration and workload management
-Terraform for Infrastructure as Code (IaC)
-Ansible for configuration management and automation
-ArgoCD for GitOps continuous delivery
-Prometheus and Grafana for monitoring and observability
-Docker for application packaging and deployment
-Node.js and React sample application for end-to-end validation
-Objectives
-Provision infrastructure using declarative automation
-Deploy applications through GitOps workflows
-Implement monitoring and alerting for platform visibility
-Demonstrate scalable and repeatable platform operations
-Simulate production-style deployment and operational practices
-Technology Stack
+## Architecture
+```mermaid
+graph TD
 
-Terraform | Ansible | Kubernetes | Docker | ArgoCD | Prometheus | Grafana | Node.js | React
+A[GitHub] --> B[ArgoCD]
+B --> C[Kubernetes]
+
+C --> D[React Frontend]
+C --> E[Node Backend]
+
+E --> F[MongoDB]
+
+C --> G[Prometheus]
+G --> H[Grafana]
+
+I[Terraform] --> C
+J[Ansible] --> C
+```
+## Screenshots
+### Grafana Dashboard
+(图)
+
+### ArgoCD Application Status
+(图)
+
+### Kubernetes Workloads
+(图)
+
+## Reliability & Observability
+
+This platform includes:
+
+- Prometheus metrics collection
+- Grafana dashboards and visualization
+- Kubernetes health monitoring
+- Service-level observability
+- Alerting workflows
+- Production-style troubleshooting practices
+
+## Key Capabilities
+
+- Infrastructure as Code (Terraform)
+- Configuration Management (Ansible)
+- GitOps Continuous Delivery (ArgoCD)
+- Kubernetes Workload Orchestration
+- Monitoring & Observability (Prometheus + Grafana)
+- Dockerized Application Deployment
+- Full-Stack Application Validation (Node.js + React + MongoDB)
+
+## Technology Stack
+Terraform | Ansible | Kubernetes | Docker | ArgoCD | Prometheus | Grafana | Node.js | React | MongoDB
 
 ## Run Locally
 
