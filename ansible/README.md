@@ -32,3 +32,17 @@ ansible/
 - Keep secrets out of inventory files.
 - Use Ansible Vault or an external secret manager for sensitive values.
 - Keep host-specific configuration in inventory or group vars, not role logic.
+
+## Dev Inventory
+
+The dev inventory targets localhost by default:
+
+```bash
+ansible-inventory -i ansible/inventories/dev/hosts.yml --list
+```
+
+Dev group variables live in:
+
+```text
+ansible/group_vars/dev.yml
+```

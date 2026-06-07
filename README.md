@@ -597,3 +597,4 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 52: Add Terraform plan guide
 - Step 53: Add Terraform remote state skeleton
 - Step 54: Add Ansible directory structure
+- Step 55: Add Ansible inventory and variables

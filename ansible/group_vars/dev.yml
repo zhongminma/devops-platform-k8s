@@ -1,0 +1,7 @@
+---
+project_name: devops-platform-k8s
+environment: dev
+aws_region: us-east-1
+cluster_name: devops-platform-dev
+kubeconfig_path: "{{ lookup('env', 'HOME') }}/.kube/config"
+platform_tools_dir: /usr/local/bin
