@@ -12,6 +12,14 @@ resource "aws_vpc" "this" {
   }
 }
 
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
+
+  tags = {
+    Name = "${local.name_prefix}-igw"
+  }
+}
+
 resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidrs)
 

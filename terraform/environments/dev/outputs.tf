@@ -43,6 +43,11 @@ output "network_vpc_id" {
   value       = module.network.vpc_id
 }
 
+output "network_internet_gateway_id" {
+  description = "Internet gateway ID created by the network module."
+  value       = module.network.internet_gateway_id
+}
+
 output "network_public_subnet_ids" {
   description = "Public subnet IDs created by the network module."
   value       = module.network.public_subnet_ids

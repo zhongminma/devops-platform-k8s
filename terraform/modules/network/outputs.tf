@@ -8,6 +8,11 @@ output "vpc_id" {
   value       = aws_vpc.this.id
 }
 
+output "internet_gateway_id" {
+  description = "ID of the internet gateway created by the network module."
+  value       = aws_internet_gateway.this.id
+}
+
 output "vpc_cidr" {
   description = "Configured VPC CIDR block."
   value       = aws_vpc.this.cidr_block
