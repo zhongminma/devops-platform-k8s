@@ -37,3 +37,8 @@ output "eks_kubernetes_version" {
   description = "Kubernetes version configured by the EKS module."
   value       = module.eks.kubernetes_version
 }
+
+output "network_vpc_id" {
+  description = "VPC ID created by the network module."
+  value       = module.network.vpc_id
+}

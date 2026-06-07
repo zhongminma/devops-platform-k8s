@@ -167,7 +167,7 @@ The network module skeleton lives at:
 terraform/modules/network
 ```
 
-It currently defines module inputs and placeholder outputs. It does not create AWS resources yet.
+It creates the base AWS VPC and exposes VPC outputs. Subnets and routing resources will be added in later steps.
 
 ## EKS Module Skeleton
 

@@ -3,9 +3,14 @@ output "name_prefix" {
   value       = local.name_prefix
 }
 
+output "vpc_id" {
+  description = "ID of the VPC created by the network module."
+  value       = aws_vpc.this.id
+}
+
 output "vpc_cidr" {
   description = "Configured VPC CIDR block."
-  value       = var.vpc_cidr
+  value       = aws_vpc.this.cidr_block
 }
 
 output "availability_zones" {
