@@ -546,3 +546,27 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 56: Add Ansible common bootstrap role
 - Step 57: Add Ansible Kubernetes tooling role
 - Step 58: Add Ansible platform bootstrap playbook
+- Step 59: Add MongoDB backend dependency and config
+
+## MongoDB Backend Configuration
+
+The backend includes optional MongoDB configuration for future posts persistence.
+
+Environment variables:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `MONGODB_URI` | MongoDB connection string | disabled when unset |
+| `MONGODB_DATABASE` | MongoDB database name | `devops_platform` |
+
+Local example values are available in:
+
+```text
+apps/backend/.env.example
+```
+
+Current behavior:
+
+- If `MONGODB_URI` is unset, the backend keeps using in-memory posts.
+- If MongoDB connection fails, the backend logs the error and keeps serving the API.
+- Posts persistence will be added in the next MongoDB step.

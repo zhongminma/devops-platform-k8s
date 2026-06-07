@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import { connectToDatabase, getDatabaseStatus } from "./database.js";
 import client from "prom-client";
 
 const app = express();
@@ -39,7 +40,8 @@ app.use(recordHttpMetrics);
 app.get("/health", (_req, res) => {
   res.json({
     status: "ok",
-    service: "devops-platform-backend"
+    service: "devops-platform-backend",
+    database: getDatabaseStatus()
   });
 });
 
@@ -114,6 +116,8 @@ app.delete("/api/posts/:post_id", (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found", path: req.path });
 });
+
+await connectToDatabase();
 
 app.listen(port, () => {
   console.log(`Backend API listening on port ${port}`);
