@@ -460,6 +460,23 @@ The runbook covers:
 - ImagePullBackOff and CrashLoopBackOff troubleshooting
 - Rollout and rollback commands
 
+## CI/CD Status
+
+The current CI/CD chain and production-hardening backlog are documented in:
+
+```text
+docs/cicd-status.md
+```
+
+Current status:
+
+```text
+CI complete
+Docker image publishing complete
+GitOps CD foundation complete
+Production hardening backlog documented
+```
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -487,3 +504,4 @@ The runbook covers:
 - Step 23: Add Kustomize structure
 - Step 24: Add Argo CD Application manifest
 - Step 25: Add operations runbook
+- Step 26: Add CI/CD status and hardening checklist
