@@ -549,6 +549,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 59: Add MongoDB backend dependency and config
 - Step 60: Persist posts with MongoDB repository
 - Step 61: Add MongoDB Docker Compose service
+- Step 62: Add MongoDB Kubernetes manifests
 
 ## MongoDB Backend Configuration
 
@@ -625,3 +626,34 @@ To remove the database volume during local testing:
 ```bash
 docker compose down -v
 ```
+
+## MongoDB Kubernetes Manifests
+
+MongoDB Kubernetes resources live in:
+
+```text
+k8s/mongodb
+```
+
+Resources:
+
+| Resource | Purpose |
+| --- | --- |
+| `PersistentVolumeClaim/mongodb-data` | Stores MongoDB data for local/dev Kubernetes |
+| `Deployment/mongodb` | Runs a single MongoDB 7 Pod |
+| `Service/mongodb` | Provides the stable in-cluster MongoDB DNS name |
+
+The backend deployment is configured with:
+
+```yaml
+MONGODB_URI: mongodb://mongodb:27017
+MONGODB_DATABASE: devops_platform
+```
+
+The local Kustomize overlay includes MongoDB:
+
+```bash
+kubectl apply -k k8s/overlays/local
+```
+
+This is a learning/dev MongoDB deployment. Production should use a managed MongoDB service or a properly operated StatefulSet with backups and security controls.

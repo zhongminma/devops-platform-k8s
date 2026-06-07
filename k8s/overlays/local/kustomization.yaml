@@ -4,5 +4,6 @@ resources:
   - ../../base
   - ../../backend
   - ../../frontend
+  - ../../mongodb
   - ../../monitoring
   - ../../ingress
