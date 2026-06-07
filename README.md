@@ -310,6 +310,24 @@ CI checks:
 - Frontend npm audit
 - Kubernetes and observability YAML parsing
 
+## Docker Build CI
+
+GitHub Actions also validates Docker image builds without pushing images.
+
+Workflow file:
+
+```text
+.github/workflows/docker-build.yml
+```
+
+Docker build checks:
+
+- Backend Docker image build
+- Frontend Docker image build
+- Frontend build argument `VITE_API_BASE_URL=/api`
+
+This is still CI, not CD, because it does not publish images or deploy to Kubernetes.
+
 ## Progress
 
 - Step 1: Initialize the GitHub repository
@@ -329,3 +347,4 @@ CI checks:
 - Step 15: Add Prometheus and Grafana Kubernetes manifests
 - Step 16: Add Grafana dashboard provisioning
 - Step 17: Add GitHub Actions CI
+- Step 18: Add Docker build CI
