@@ -34,8 +34,49 @@ export function getDatabase() {
 export function getDatabaseStatus() {
   return {
     status: connectionStatus,
+    required: isDatabaseRequired(),
     database: mongodbUri ? mongodbDatabase : null
   };
+}
+
+export function isDatabaseRequired() {
+  return Boolean(mongodbUri);
+}
+
+export async function pingDatabase() {
+  if (!mongodbUri) {
+    return {
+      ok: true,
+      status: "disabled",
+      required: false
+    };
+  }
+
+  if (!database) {
+    return {
+      ok: false,
+      status: connectionStatus,
+      required: true
+    };
+  }
+
+  try {
+    await database.command({ ping: 1 });
+    connectionStatus = "connected";
+    return {
+      ok: true,
+      status: connectionStatus,
+      required: true
+    };
+  } catch (error) {
+    connectionStatus = "error";
+    return {
+      ok: false,
+      status: connectionStatus,
+      required: true,
+      error: error.message
+    };
+  }
 }
 
 export async function closeDatabaseConnection() {

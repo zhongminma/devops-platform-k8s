@@ -550,6 +550,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 60: Persist posts with MongoDB repository
 - Step 61: Add MongoDB Docker Compose service
 - Step 62: Add MongoDB Kubernetes manifests
+- Step 63: Add MongoDB health and readiness checks
 
 ## MongoDB Backend Configuration
 
@@ -657,3 +658,27 @@ kubectl apply -k k8s/overlays/local
 ```
 
 This is a learning/dev MongoDB deployment. Production should use a managed MongoDB service or a properly operated StatefulSet with backups and security controls.
+
+## MongoDB Health And Readiness Checks
+
+The backend exposes two health-style endpoints:
+
+| Endpoint | Purpose |
+| --- | --- |
+| `/health` | Lightweight liveness check for the backend process |
+| `/ready` | Readiness check that validates MongoDB when `MONGODB_URI` is configured |
+
+Kubernetes backend probes use:
+
+```yaml
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 8080
+```
+
+MongoDB Kubernetes probes use TCP socket checks on port `27017`.

@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import { connectToDatabase, getDatabaseStatus } from "./database.js";
+import { connectToDatabase, getDatabaseStatus, pingDatabase } from "./database.js";
 import {
   createPost,
   deletePost,
@@ -37,6 +37,17 @@ app.get("/health", (_req, res) => {
     status: "ok",
     service: "devops-platform-backend",
     database: getDatabaseStatus()
+  });
+});
+
+app.get("/ready", async (_req, res) => {
+  const database = await pingDatabase();
+  const ready = database.ok;
+
+  res.status(ready ? 200 : 503).json({
+    status: ready ? "ready" : "not_ready",
+    service: "devops-platform-backend",
+    database
   });
 });
 
