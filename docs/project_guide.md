@@ -554,6 +554,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 64: Add backend Kubernetes ConfigMap and Secret
 - Step 65: Add MongoDB dev authentication
 - Step 66: Add MongoDB posts seed script
+- Step 67: Add backend API tests
 
 ## MongoDB Backend Configuration
 
@@ -743,3 +744,23 @@ The script requires `MONGODB_URI` to be configured. It creates a unique index on
 ```
 
 The script is idempotent and can be run more than once.
+
+## Backend API Tests
+
+The backend now has a Node test suite for the API surface:
+
+```bash
+cd apps/backend
+npm test
+```
+
+The tests cover:
+
+| Area | What is verified |
+| --- | --- |
+| `/health` | Backend service identity and database status |
+| `/ready` | Readiness succeeds when MongoDB is not required |
+| `/api/posts` | Create, read, update, and delete behavior |
+| Validation | Empty post descriptions return `400` |
+
+The Express app is exported from `src/app.js`, while `src/server.js` only connects to MongoDB and starts the listener. This keeps the runtime entrypoint simple and lets tests exercise the API without booting the full server process.
