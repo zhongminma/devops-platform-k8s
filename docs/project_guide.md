@@ -552,6 +552,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 62: Add MongoDB Kubernetes manifests
 - Step 63: Add MongoDB health and readiness checks
 - Step 64: Add backend Kubernetes ConfigMap and Secret
+- Step 65: Add MongoDB dev authentication
 
 ## MongoDB Backend Configuration
 
@@ -696,3 +697,28 @@ Backend Kubernetes configuration now uses separate resources:
 The backend deployment imports the ConfigMap with `envFrom` and reads `MONGODB_URI` from the Secret.
 
 The current Secret value is a local/dev placeholder. Production should use an external secret manager or sealed/encrypted secret workflow.
+
+## MongoDB Dev Authentication
+
+Docker Compose and Kubernetes now use development MongoDB credentials:
+
+| Value | Purpose |
+| --- | --- |
+| `devops` | Development MongoDB root username |
+| `devops-password` | Development MongoDB root password |
+
+Docker Compose passes these values to the `mongodb` service with:
+
+```text
+MONGO_INITDB_ROOT_USERNAME
+MONGO_INITDB_ROOT_PASSWORD
+```
+
+Kubernetes stores the development values in:
+
+```text
+k8s/mongodb/secret.yaml
+k8s/backend/secret.yaml
+```
+
+These values are placeholders for local learning only. Production should use external secret management, encryption, rotation, and least-privilege database users.
