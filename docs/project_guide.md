@@ -664,6 +664,8 @@ kubectl apply -k k8s/overlays/local
 
 This is a learning/dev MongoDB deployment. Production should use a managed MongoDB service or a properly operated StatefulSet with backups and security controls.
 
+MongoDB uses a `Recreate` deployment strategy in local Kubernetes. This prevents two MongoDB Pods from mounting the same `ReadWriteOnce` PVC at the same time during updates, which can otherwise cause `DBPathInUse` and `CrashLoopBackOff`.
+
 ## MongoDB Health And Readiness Checks
 
 The backend exposes two health-style endpoints:
