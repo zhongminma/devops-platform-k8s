@@ -553,6 +553,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 63: Add MongoDB health and readiness checks
 - Step 64: Add backend Kubernetes ConfigMap and Secret
 - Step 65: Add MongoDB dev authentication
+- Step 66: Add MongoDB posts seed script
 
 ## MongoDB Backend Configuration
 
@@ -722,3 +723,23 @@ k8s/backend/secret.yaml
 ```
 
 These values are placeholders for local learning only. Production should use external secret management, encryption, rotation, and least-privilege database users.
+
+## MongoDB Seed Script
+
+The backend includes an explicit MongoDB seed script:
+
+```bash
+cd apps/backend
+npm run seed:posts
+```
+
+The script requires `MONGODB_URI` to be configured. It creates a unique index on `post_id` and upserts the initial posts:
+
+```json
+[
+  { "post_id": 1, "description": "Create the backend API" },
+  { "post_id": 2, "description": "Connect the React frontend" }
+]
+```
+
+The script is idempotent and can be run more than once.
