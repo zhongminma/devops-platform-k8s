@@ -555,6 +555,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 65: Add MongoDB dev authentication
 - Step 66: Add MongoDB posts seed script
 - Step 67: Add backend API tests
+- Step 68: Run backend API tests in CI
 
 ## MongoDB Backend Configuration
 
@@ -764,3 +765,15 @@ The tests cover:
 | Validation | Empty post descriptions return `400` |
 
 The Express app is exported from `src/app.js`, while `src/server.js` only connects to MongoDB and starts the listener. This keeps the runtime entrypoint simple and lets tests exercise the API without booting the full server process.
+
+
+## Backend Tests In CI
+
+The main CI workflow now runs the backend test suite on every push and pull request to `main`:
+
+```yaml
+- name: Run backend tests
+  run: npm test
+```
+
+The backend CI job now validates syntax for the main runtime modules, installs dependencies with `npm ci`, runs the API tests, and then runs `npm audit --audit-level=moderate`.

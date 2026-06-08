@@ -29,8 +29,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check server syntax
-        run: node --check src/server.js
+      - name: Check backend syntax
+        run: node --check src/app.js src/server.js src/posts.repository.js src/database.js
+
+      - name: Run backend tests
+        run: npm test
 
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
