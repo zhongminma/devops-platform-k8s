@@ -551,6 +551,7 @@ The first Terraform step only adds the directory structure. Provider and module 
 - Step 61: Add MongoDB Docker Compose service
 - Step 62: Add MongoDB Kubernetes manifests
 - Step 63: Add MongoDB health and readiness checks
+- Step 64: Add backend Kubernetes ConfigMap and Secret
 
 ## MongoDB Backend Configuration
 
@@ -682,3 +683,16 @@ livenessProbe:
 ```
 
 MongoDB Kubernetes probes use TCP socket checks on port `27017`.
+
+## Backend Kubernetes Config And Secret
+
+Backend Kubernetes configuration now uses separate resources:
+
+| Resource | Purpose |
+| --- | --- |
+| `ConfigMap/backend-config` | Non-sensitive backend configuration such as `PORT` and `MONGODB_DATABASE` |
+| `Secret/backend-secrets` | MongoDB connection string |
+
+The backend deployment imports the ConfigMap with `envFrom` and reads `MONGODB_URI` from the Secret.
+
+The current Secret value is a local/dev placeholder. Production should use an external secret manager or sealed/encrypted secret workflow.

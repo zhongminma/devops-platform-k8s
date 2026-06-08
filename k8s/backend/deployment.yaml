@@ -21,15 +21,15 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: backend-config
           env:
-            - name: NODE_ENV
-              value: production
-            - name: PORT
-              value: "8080"
             - name: MONGODB_URI
-              value: mongodb://mongodb:27017
-            - name: MONGODB_DATABASE
-              value: devops_platform
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: MONGODB_URI
           readinessProbe:
             httpGet:
               path: /ready
