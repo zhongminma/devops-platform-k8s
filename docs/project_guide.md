@@ -656,6 +656,14 @@ MONGODB_URI: mongodb://mongodb:27017
 MONGODB_DATABASE: devops_platform
 ```
 
+
+For Docker Desktop Kubernetes, the local overlay maps the backend image to `devops-platform-backend:local`. Build it before applying local manifests when testing backend code changes:
+
+```bash
+docker build -t devops-platform-backend:local apps/backend
+kubectl apply -k k8s/overlays/local
+```
+
 The local Kustomize overlay includes MongoDB:
 
 ```bash

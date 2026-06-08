@@ -7,3 +7,8 @@ resources:
   - ../../mongodb
   - ../../monitoring
   - ../../ingress
+
+images:
+  - name: ghcr.io/zhongminma/devops-platform-backend
+    newName: devops-platform-backend
+    newTag: local
