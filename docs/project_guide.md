@@ -787,3 +787,24 @@ The main CI workflow now runs the backend test suite on every push and pull requ
 ```
 
 The backend CI job now validates syntax for the main runtime modules, installs dependencies with `npm ci`, runs the API tests, and then runs `npm audit --audit-level=moderate`.
+
+## Replica Scaling Notes
+
+Backend and frontend are stateless workloads, so they can be scaled by changing Deployment `replicas`:
+
+```yaml
+spec:
+  replicas: 3
+```
+
+MongoDB is stateful, so it is now modeled as a three-node StatefulSet replica set instead of a multi-replica Deployment. This gives each MongoDB Pod a stable identity and its own `ReadWriteOnce` PVC:
+
+```text
+mongodb-0.mongodb-headless.devops-platform.svc.cluster.local
+mongodb-1.mongodb-headless.devops-platform.svc.cluster.local
+mongodb-2.mongodb-headless.devops-platform.svc.cluster.local
+```
+
+The backend connects to all three members with `replicaSet=rs0` in `MONGODB_URI`. A PostSync Job named `mongodb-init-replica-set` initializes `rs0` after the StatefulSet Pods are reachable.
+
+For local Docker Desktop Kubernetes, this is a learning setup. Existing standalone MongoDB PVCs are not automatically migrated into the new StatefulSet PVCs. Production should use managed MongoDB or an operator-backed replica set with backups, restore testing, TLS, rotated secrets, monitoring, and planned upgrades.

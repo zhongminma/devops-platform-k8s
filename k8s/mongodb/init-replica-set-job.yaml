@@ -1,0 +1,63 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mongodb-init-replica-set
+  namespace: devops-platform
+  labels:
+    app: mongodb
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 6
+  template:
+    metadata:
+      labels:
+        app: mongodb-init-replica-set
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: init-replica-set
+          image: mongo:7
+          command:
+            - bash
+            - -c
+            - |
+              set -euo pipefail
+
+              hosts=(
+                mongodb-0.mongodb-headless.devops-platform.svc.cluster.local
+                mongodb-1.mongodb-headless.devops-platform.svc.cluster.local
+                mongodb-2.mongodb-headless.devops-platform.svc.cluster.local
+              )
+
+              for host in "${hosts[@]}"; do
+                until mongosh "mongodb://devops:devops-password@${host}:27017/admin?authSource=admin" --quiet --eval 'db.adminCommand({ ping: 1 }).ok' >/dev/null; do
+                  echo "Waiting for ${host}..."
+                  sleep 5
+                done
+              done
+
+              mongosh "mongodb://devops:devops-password@mongodb-0.mongodb-headless.devops-platform.svc.cluster.local:27017/admin?authSource=admin" --eval '
+                const config = {
+                  _id: "rs0",
+                  members: [
+                    { _id: 0, host: "mongodb-0.mongodb-headless.devops-platform.svc.cluster.local:27017" },
+                    { _id: 1, host: "mongodb-1.mongodb-headless.devops-platform.svc.cluster.local:27017" },
+                    { _id: 2, host: "mongodb-2.mongodb-headless.devops-platform.svc.cluster.local:27017" }
+                  ]
+                };
+
+                try {
+                  const status = rs.status();
+                  print(`Replica set already initialized: ${status.set}`);
+                } catch (error) {
+                  if (error.codeName === "NotYetInitialized" || String(error).includes("no replset config")) {
+                    print("Initializing MongoDB replica set rs0");
+                    rs.initiate(config);
+                  } else {
+                    throw error;
+                  }
+                }
+              '
